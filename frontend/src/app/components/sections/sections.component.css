@@ -1,0 +1,135 @@
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.sections-container::-webkit-scrollbar { width: 3px; }
+.sections-container::-webkit-scrollbar-thumb { background: rgba(108, 99, 255, 0.2); border-radius: 3px; }
+
+/* Paper Info */
+.paper-info {
+  padding: 1.25rem;
+  border-radius: 16px;
+  background: rgba(108, 99, 255, 0.06);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+}
+
+.paper-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #E8E6F0;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.paper-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.paper-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #6B6880;
+}
+
+.paper-meta svg { color: #6C63FF; }
+
+/* Section list */
+.section-heading {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #4A4760;
+  margin: 0;
+  padding: 0 0.25rem;
+}
+
+.section-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section-item {
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.section-item:hover {
+  background: rgba(108, 99, 255, 0.06);
+  border-color: rgba(108, 99, 255, 0.1);
+}
+
+.section-item.active {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: rgba(108, 99, 255, 0.2);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-name {
+  font-size: 0.85rem;
+  color: #B8B5CC;
+  font-weight: 500;
+}
+
+.section-item.active .section-name { color: #E8E6F0; }
+
+.section-pages {
+  font-size: 0.65rem;
+  color: #4A4760;
+  background: rgba(108, 99, 255, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+}
+
+.section-preview {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #6B6880;
+  line-height: 1.5;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Skeleton */
+.skeleton-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.skeleton-item {
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(108, 99, 255, 0.04) 0%, rgba(108, 99, 255, 0.08) 50%, rgba(108, 99, 255, 0.04) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.no-sections p {
+  color: #4A4760;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 2rem 0;
+}

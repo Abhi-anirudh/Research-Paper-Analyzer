@@ -1,0 +1,139 @@
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dropzone {
+  width: 100%;
+  max-width: 520px;
+  padding: 3rem 2rem;
+  border: 2px dashed rgba(108, 99, 255, 0.35);
+  border-radius: 20px;
+  background: rgba(108, 99, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.dropzone:hover,
+.dropzone.drag-over {
+  border-color: #6C63FF;
+  background: rgba(108, 99, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(108, 99, 255, 0.15);
+}
+
+.dropzone.uploading {
+  pointer-events: none;
+  border-color: #6C63FF;
+  background: rgba(108, 99, 255, 0.08);
+}
+
+.upload-icon {
+  color: #6C63FF;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.dropzone-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #E8E6F0;
+  margin: 0 0 0.5rem;
+}
+
+.dropzone-content p {
+  color: #9B97B0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.browse-link {
+  color: #6C63FF;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.file-hint {
+  font-size: 0.8rem !important;
+  margin-top: 0.75rem !important;
+  color: #6B6880 !important;
+}
+
+/* Progress */
+.upload-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-ring {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.progress-ring svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.progress-bg {
+  fill: none;
+  stroke: rgba(108, 99, 255, 0.15);
+  stroke-width: 6;
+}
+
+.progress-fill {
+  fill: none;
+  stroke: #6C63FF;
+  stroke-width: 6;
+  stroke-dasharray: 264;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6C63FF;
+}
+
+.processing-text {
+  color: #E8E6F0;
+  font-weight: 500;
+  margin: 0;
+}
+
+.processing-sub {
+  color: #6B6880;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Error */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 82, 82, 0.1);
+  border: 1px solid rgba(255, 82, 82, 0.25);
+  color: #FF5252;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,103 @@
+<div class="app-shell">
+  <!-- Background decoration -->
+  <div class="bg-gradient"></div>
+  <div class="bg-grid"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">📄</div>
+      <span class="brand-text">Research Paper Analyzer</span>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn" *ngIf="currentView === 'analyze'" (click)="uploadNew()" id="btn-new-paper">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        New Paper
+      </button>
+    </div>
+  </nav>
+
+  <!-- Upload View -->
+  <main class="content upload-view" *ngIf="currentView === 'upload'">
+    <div class="hero">
+      <h1>Analyze Research Papers with AI</h1>
+      <p>Upload your PDF and ask questions grounded in the paper content. No hallucinations — only cited answers.</p>
+    </div>
+    <app-upload (paperUploaded)="onPaperUploaded($event)"></app-upload>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🔍</span>
+        <h4>Deep Understanding</h4>
+        <p>Ask complex questions and get precise answers with section/page references</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🛡️</span>
+        <h4>Anti-Hallucination</h4>
+        <p>Every answer is grounded strictly in the paper content — verified and cited</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h4>Smart Summaries</h4>
+        <p>Auto-generated beginner and technical summaries with section breakdown</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💡</span>
+        <h4>Key Insights</h4>
+        <p>Novelty detection, key findings, and limitation analysis in one click</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Analyze View -->
+  <main class="content analyze-view" *ngIf="currentView === 'analyze'">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <app-sections
+        [paperId]="paperId"
+        [paperTitle]="paperTitle"
+        [paperAuthors]="paperAuthors"
+        [totalPages]="totalPages"
+        [numChunks]="numChunks"
+      ></app-sections>
+    </aside>
+
+    <!-- Main panel -->
+    <div class="main-panel">
+      <!-- Tab bar -->
+      <div class="tab-bar">
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'chat'"
+          (click)="switchTab('chat')"
+          id="tab-chat"
+        >
+          💬 Chat
+        </button>
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'summary'"
+          (click)="switchTab('summary')"
+          id="tab-summary"
+        >
+          📝 Summary
+        </button>
+      </div>
+
+      <!-- Tab content -->
+      <div class="tab-content">
+        <app-chat
+          *ngIf="activeTab === 'chat'"
+          [paperId]="paperId"
+          [paperTitle]="paperTitle"
+        ></app-chat>
+        <app-summary
+          *ngIf="activeTab === 'summary'"
+          [paperId]="paperId"
+        ></app-summary>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,89 @@
+.summary-container {
+  border-radius: 20px;
+  background: rgba(22, 20, 35, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(108, 99, 255, 0.12);
+  overflow: hidden;
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+}
+
+.summary-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #E8E6F0;
+}
+
+.level-toggle {
+  display: flex;
+  gap: 0.25rem;
+  padding: 3px;
+  background: rgba(108, 99, 255, 0.06);
+  border-radius: 12px;
+}
+
+.level-btn {
+  padding: 0.4rem 0.85rem;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #6B6880;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.level-btn.active {
+  background: rgba(108, 99, 255, 0.15);
+  color: #E8E6F0;
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.15);
+}
+
+.level-btn:hover:not(.active) {
+  color: #B8B5CC;
+}
+
+.summary-body {
+  padding: 1.5rem;
+}
+
+.summary-text {
+  color: #C8C6D8;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+
+/* Skeleton */
+.skeleton-text { display: flex; flex-direction: column; gap: 0.65rem; }
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(108, 99, 255, 0.04) 0%, rgba(108, 99, 255, 0.08) 50%, rgba(108, 99, 255, 0.04) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.empty-state p {
+  color: #4A4760;
+  font-size: 0.85rem;
+}

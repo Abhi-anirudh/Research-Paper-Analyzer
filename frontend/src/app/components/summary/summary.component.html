@@ -1,0 +1,40 @@
+<div class="summary-container">
+  <div class="summary-header">
+    <h3>Auto-Summary</h3>
+    <div class="level-toggle">
+      <button
+        class="level-btn"
+        [class.active]="activeLevel === 'beginner'"
+        (click)="switchLevel('beginner')"
+        id="btn-beginner"
+      >
+        🎓 Beginner
+      </button>
+      <button
+        class="level-btn"
+        [class.active]="activeLevel === 'technical'"
+        (click)="switchLevel('technical')"
+        id="btn-technical"
+      >
+        🔬 Technical
+      </button>
+    </div>
+  </div>
+
+  <div class="summary-body">
+    <!-- Skeleton while loading -->
+    <div class="skeleton-text" *ngIf="isLoading">
+      <div class="skeleton-line" *ngFor="let l of [1,2,3,4,5,6,7,8]" [style.width.%]="70 + (l * 3)"></div>
+    </div>
+
+    <!-- Summary content -->
+    <div class="summary-content" *ngIf="!isLoading && summaryText">
+      <div class="summary-text" [innerHTML]="summaryText"></div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="!isLoading && !summaryText && !hasLoaded">
+      <p>Upload a paper to generate an auto-summary</p>
+    </div>
+  </div>
+</div>
