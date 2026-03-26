@@ -2,8 +2,9 @@ services:
   - type: web
     name: research-paper-backend
     env: python
-    buildCommand: "cd backend && pip install -r requirements.txt"
-    startCommand: "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    rootDirectory: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT --timeout-keep-alive 120"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.8
