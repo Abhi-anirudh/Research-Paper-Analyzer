@@ -8,7 +8,7 @@ PyMuPDF==1.24.9
 
 # Embeddings & Vector Store
 sentence-transformers==3.0.1
-faiss-cpu==1.8.0.post1
+faiss-cpu==1.13.2
 numpy==1.26.4
 
 # LLM - Google Gemini
