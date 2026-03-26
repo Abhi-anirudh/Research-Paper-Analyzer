@@ -52,8 +52,13 @@ export interface CompareResponse {
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  // Use relative /api path when deployed (proxied via nginx), and localhost:8000 for local development
-  private baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000/api' : '/api';
+  // 🌍 DEPLOYMENT INSTRUCTION:
+  // When deploying the frontend to Vercel, replace the empty string below
+  // with your remote backend URL (e.g., 'https://your-backend.onrender.com/api')
+  private deployedBackendUrl = ''; 
+  private baseUrl = window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000/api' 
+    : (this.deployedBackendUrl || '/api');
 
   constructor(private http: HttpClient) {}
 
