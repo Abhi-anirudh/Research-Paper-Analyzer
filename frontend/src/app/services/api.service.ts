@@ -55,7 +55,7 @@ export class ApiService {
   // 🌍 DEPLOYMENT INSTRUCTION:
   // When deploying the frontend to Vercel, replace the empty string below
   // with your remote backend URL (e.g., 'https://your-backend.onrender.com/api')
-  private deployedBackendUrl = ''; 
+  private deployedBackendUrl = 'https://research-paper-analyzer-56g0.onrender.com/api';
   private baseUrl = window.location.hostname === 'localhost' 
     ? 'http://localhost:8000/api' 
     : (this.deployedBackendUrl || '/api');
