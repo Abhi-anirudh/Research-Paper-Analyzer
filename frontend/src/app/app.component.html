@@ -10,6 +10,10 @@
       <span class="brand-text">Research Paper Analyzer</span>
     </div>
     <div class="nav-actions">
+      <button class="theme-toggle-btn" (click)="toggleTheme()" [title]="isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+        <span *ngIf="isDarkMode">☀️</span>
+        <span *ngIf="!isDarkMode">🌙</span>
+      </button>
       <button class="nav-btn" *ngIf="currentView === 'analyze'" (click)="uploadNew()" id="btn-new-paper">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>

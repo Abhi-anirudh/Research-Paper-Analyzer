@@ -48,7 +48,8 @@ def answer_question(
 
     context = _format_context(sources)
     user_prompt = QUERY_TEMPLATE.format(context=context, question=question)
-    answer = generate(SYSTEM_PROMPT, user_prompt)
+    settings = get_settings()
+    answer = generate(SYSTEM_PROMPT, user_prompt, model_name=settings.chat_model)
 
     return answer, sources, True
 

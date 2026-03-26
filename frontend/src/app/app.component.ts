@@ -42,4 +42,15 @@ export class AppComponent {
   switchTab(tab: 'chat' | 'summary'): void {
     this.activeTab = tab;
   }
+
+  isDarkMode = true;
+
+  toggleTheme(): void {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
 }

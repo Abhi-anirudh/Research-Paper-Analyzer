@@ -66,26 +66,24 @@ def _generate_groq(model_id: str, system_prompt: str, user_prompt: str) -> str:
 
 
 def generate(system_prompt: str, user_prompt: str, model_name: str | None = None) -> str:
-    """Generate a response using the appropriate provider.
+    """Generate a response using the appropriate provider."""
+    try:
+        _ensure_configured()
+        settings = get_settings()
+        actual_model = model_name or settings.chat_model
 
-    Args:
-        system_prompt: System-level instructions.
-        user_prompt: User message with context and question.
-        model_name: The LiteLLM model string to use. Defaults to chat_model.
+        print(f"DEBUG: Generating with model: {actual_model}")
 
-    Returns:
-        The model's text response.
-    """
-    _ensure_configured()
-    settings = get_settings()
-    actual_model = model_name or settings.chat_model
-
-    if actual_model.startswith("groq/"):
-        model_id = actual_model.split("groq/")[1]
-        return _generate_groq(model_id, system_prompt, user_prompt)
-    elif actual_model.startswith("gemini/"):
-        model_id = actual_model.split("gemini/")[1]
-        return _generate_gemini(model_id, system_prompt, user_prompt)
-    else:
-        # Fallback to gemini directly
-        return _generate_gemini(actual_model, system_prompt, user_prompt)
+        if actual_model.startswith("groq/"):
+            model_id = actual_model.split("groq/")[1]
+            return _generate_groq(model_id, system_prompt, user_prompt)
+        elif actual_model.startswith("gemini/"):
+            model_id = actual_model.split("gemini/")[1]
+            return _generate_gemini(model_id, system_prompt, user_prompt)
+        else:
+            return _generate_gemini(actual_model, system_prompt, user_prompt)
+    except Exception as e:
+        import traceback
+        print("DEBUG: ERROR IN LLM GENERATION:")
+        traceback.print_exc()
+        raise e

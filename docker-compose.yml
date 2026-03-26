@@ -8,7 +8,10 @@ services:
       - "8000:8000"
     environment:
       - GEMINI_API_KEY=${GEMINI_API_KEY}
-      - LLM_MODEL=gemini-2.0-flash
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - CHAT_MODEL=${CHAT_MODEL:-groq/llama3-8b-8192}
+      - SUMMARY_MODEL=${SUMMARY_MODEL:-gemini/gemini-2.0-flash}
+      - ADVANCED_MODEL=${ADVANCED_MODEL:-groq/llama-3.3-70b-versatile}
       - EMBEDDING_MODEL=all-MiniLM-L6-v2
       - SIMILARITY_THRESHOLD=0.3
       - TOP_K=5

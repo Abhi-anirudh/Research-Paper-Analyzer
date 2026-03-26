@@ -52,7 +52,8 @@ export interface CompareResponse {
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private baseUrl = 'http://localhost:8000/api';
+  // Use relative /api path when deployed (proxied via nginx), and localhost:8000 for local development
+  private baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000/api' : '/api';
 
   constructor(private http: HttpClient) {}
 

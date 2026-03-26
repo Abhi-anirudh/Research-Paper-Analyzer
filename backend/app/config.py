@@ -8,8 +8,8 @@ class Settings(BaseSettings):
 
     gemini_api_key: str = ""
     groq_api_key: str = ""
-    chat_model: str = "groq/llama3-8b-8192"
-    summary_model: str = "gemini/gemini-2.0-flash"
+    chat_model: str = "groq/llama-3.1-8b-instant"
+    summary_model: str = "groq/llama-3.1-8b-instant"
     advanced_model: str = "groq/llama-3.3-70b-versatile"
     embedding_model: str = "all-MiniLM-L6-v2"
     similarity_threshold: float = 0.3

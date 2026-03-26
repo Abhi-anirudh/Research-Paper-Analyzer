@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService, QueryResponse, SourceChunk } from '../../services/api.service';
@@ -19,7 +19,7 @@ interface ChatMessage {
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css',
 })
-export class ChatComponent implements AfterViewChecked {
+export class ChatComponent {
   @Input() paperId = '';
   @Input() paperTitle = '';
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
@@ -39,9 +39,6 @@ export class ChatComponent implements AfterViewChecked {
 
   constructor(private api: ApiService) {}
 
-  ngAfterViewChecked(): void {
-    this.scrollToBottom();
-  }
 
   sendMessage(question?: string): void {
     const q = question || this.currentQuestion.trim();
@@ -107,10 +104,4 @@ export class ChatComponent implements AfterViewChecked {
     }
   }
 
-  private scrollToBottom(): void {
-    try {
-      const el = this.messagesContainer?.nativeElement;
-      if (el) el.scrollTop = el.scrollHeight;
-    } catch {}
-  }
 }

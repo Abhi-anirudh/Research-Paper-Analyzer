@@ -1,9 +1,23 @@
-.summary-container {
-  border-radius: 20px;
-  background: rgba(22, 20, 35, 0.8);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(108, 99, 255, 0.12);
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
+  flex: 1;
+}
+
+.summary-container {
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .summary-header {
@@ -11,30 +25,30 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+  border-bottom: 1px solid var(--border);
 }
 
 .summary-header h3 {
   margin: 0;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #E8E6F0;
+  color: var(--text-primary);
 }
 
 .level-toggle {
   display: flex;
   gap: 0.25rem;
   padding: 3px;
-  background: rgba(108, 99, 255, 0.06);
-  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-radius: var(--radius-md);
 }
 
 .level-btn {
   padding: 0.4rem 0.85rem;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: transparent;
-  color: #6B6880;
+  color: var(--text-muted);
   font-size: 0.78rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -42,22 +56,23 @@
 }
 
 .level-btn.active {
-  background: rgba(108, 99, 255, 0.15);
-  color: #E8E6F0;
-  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.15);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 .level-btn:hover:not(.active) {
-  color: #B8B5CC;
+  color: var(--text-secondary);
 }
 
 .summary-body {
   padding: 1.5rem;
+  overflow-y: auto;
 }
 
 .summary-text {
-  color: #C8C6D8;
-  font-size: 0.88rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
   line-height: 1.75;
   white-space: pre-wrap;
 }
@@ -68,7 +83,7 @@
 .skeleton-line {
   height: 12px;
   border-radius: 6px;
-  background: linear-gradient(90deg, rgba(108, 99, 255, 0.04) 0%, rgba(108, 99, 255, 0.08) 50%, rgba(108, 99, 255, 0.04) 100%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 4%, transparent) 0%, color-mix(in srgb, var(--accent) 8%, transparent) 50%, color-mix(in srgb, var(--accent) 4%, transparent) 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -84,6 +99,6 @@
 }
 
 .empty-state p {
-  color: #4A4760;
+  color: var(--text-dim);
   font-size: 0.85rem;
 }
